@@ -1,4 +1,4 @@
-{% set version = "1.5.0" %}
+{% set version = "1.5.1" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rstantools_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz
-  sha256: e4bdca4f10d3aacfb92c3c483b1cbfed45ced81b43a2a43b4ca3f01ca3633fa7
+  sha256: 5cab16c132c12e84bd08e18cd6ef25ba39d67a04ce61015fc4490659c7cfb485
 
 build:
   number: 0
