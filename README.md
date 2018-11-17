@@ -14,9 +14,8 @@ Summary: Provides various tools for developers of R packages interfacing with 'S
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-rstantools-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-rstantools-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/r-rstantools-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-rstantools-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-rstantools-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-rstantools-feedstock/branch/master)
+All platforms:
+[![noarch](https://img.shields.io/circleci/project/github/conda-forge/r-rstantools-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/r-rstantools-feedstock)
 
 Current release info
 ====================
