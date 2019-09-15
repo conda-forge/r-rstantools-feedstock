@@ -23,15 +23,20 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{posix}}zip               # [win]
+  host:
     - r-base
-
+    - r-rcpp >=0.12.16
+    - r-desc
   run:
     - r-base
-
-test:
-  commands:
-    - $R -e "library('rstantools')"  # [not win]
-    - "\"%R%\" -e \"library('rstantools')\""  # [win]
+    - {{native}}gcc-libs         # [win]
+    - r-rcpp >=0.12.16
+    - r-desc
 
 about:
   home: http://mc-stan.org/, http://discourse.mc-stan.org
@@ -46,8 +51,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - cbrueffer
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
