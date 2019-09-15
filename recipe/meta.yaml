@@ -1,4 +1,4 @@
-{% set version = "1.5.1" %}
+{% set version = "2.0.0" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,25 +12,34 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rstantools_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz
-  sha256: 5cab16c132c12e84bd08e18cd6ef25ba39d67a04ce61015fc4490659c7cfb485
+  sha256: 4ae78aa39c3d4897f453e621a09961d6f2cda27a1b5657d4d4b32d3d89bd80c6
 
 build:
-  noarch: generic
-  number: 2001
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{posix}}zip               # [win]
+  host:
     - r-base
-
+    - r-rcpp >=0.12.16
+    - r-desc
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
+    - r-rcpp >=0.12.16
+    - r-desc
 
 test:
   commands:
-    - $R -e "library('rstantools')"  # [not win]
+    - $R -e "library('rstantools')"           # [not win]
     - "\"%R%\" -e \"library('rstantools')\""  # [win]
 
 about:
@@ -46,8 +55,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - cbrueffer
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
