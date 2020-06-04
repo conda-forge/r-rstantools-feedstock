@@ -1,4 +1,4 @@
-{% set version = '2.0.0' %}
+{% set version = "2.1.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstantools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz
-  sha256: 4ae78aa39c3d4897f453e621a09961d6f2cda27a1b5657d4d4b32d3d89bd80c6
+  sha256: 67c4ac45b71ac4d8e78e2c5a66f3efd4fc841619cc0a77bcd8fa05fc8d266eeb
 
 build:
-  merge_build_host: True  # [win]
-  number: 2
+  merge_build_host: true  # [win]
+  number: 0
   #noarch: generic
   rpaths:
     - lib/R/lib/
@@ -30,11 +30,13 @@ requirements:
   host:
     - r-base
     - r-rcpp >=0.12.16
+    - r-rcppparallel >=5.0.1
     - r-desc
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.16
+    - r-rcppparallel >=5.0.1
     - r-desc
 
 test:
@@ -44,14 +46,11 @@ test:
 
 about:
   home: https://mc-stan.org/rstantools/, https://discourse.mc-stan.org/
-  license: GPL-3
-  summary: Provides various tools for developers of R packages interfacing with 'Stan' <https://mc-stan.org>,
-    including functions to set up the required package structure, S3 generics and default
-    methods to unify function naming across 'Stan'-based R packages, and vignettes with
-    recommendations for developers.
+  license: GPL-3.0-only
+  summary: Provides various tools for developers of R packages interfacing with 'Stan' <https://mc-stan.org>, including functions to set up the required package structure, S3 generics and default methods to unify function naming across 'Stan'-based R packages, and vignettes with recommendations for developers.
   license_family: GPL3
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
