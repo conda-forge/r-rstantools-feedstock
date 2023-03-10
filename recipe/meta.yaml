@@ -1,4 +1,4 @@
-{% set version = "2.2.0" %}
+{% set version = "2.3.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstantools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz
-  sha256: cb810baeb90c67668361b666c6862df9917aff6aaec63d2c3a485f28407c4eb7
+  sha256: 937e2de6ac80214dccd90c09b26ebcf366c4b55adc84837a6fbb137ebb13822d
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   #noarch: generic
   rpaths:
     - lib/R/lib/
