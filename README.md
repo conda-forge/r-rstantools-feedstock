@@ -3,6 +3,7 @@ About r-rstantools-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rstantools-feedstock/blob/main/LICENSE.txt)
 
+
 About r-rstantools
 ------------------
 
@@ -11,6 +12,7 @@ Home: https://mc-stan.org/rstantools/, https://discourse.mc-stan.org/
 Package license: GPL-3.0-only
 
 Summary: Provides various tools for developers of R packages interfacing with 'Stan' <https://mc-stan.org>, including functions to set up the required package structure, S3 generics and default methods to unify function naming across 'Stan'-based R packages, and vignettes with recommendations for developers.
+
 About r-rstantools
 ------------------
 
