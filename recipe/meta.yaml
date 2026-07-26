@@ -1,4 +1,4 @@
-{% set version = "2.6.0" %}
+{% set version = "2.7.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstantools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz
-  sha256: 6fe4d8f48e42bb48a0d65aedf017b4e1a919a29e3431301cc0295f7777a7f837
+  sha256: c880c6b35a00a23323bbc57695c4f48302c3c1b6944bb8b3bb0e4166d9834be2
 
 build:
   number: 0
