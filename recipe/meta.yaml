@@ -1,4 +1,4 @@
-{% set version = "2.6.0" %}
+{% set version = "2.7.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstantools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz
-  sha256: 6fe4d8f48e42bb48a0d65aedf017b4e1a919a29e3431301cc0295f7777a7f837
+  sha256: c880c6b35a00a23323bbc57695c4f48302c3c1b6944bb8b3bb0e4166d9834be2
 
 build:
   number: 0
@@ -17,10 +17,15 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-quickjsr                 # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
     - r-rcppparallel             # [build_platform != target_platform]
     - r-desc                     # [build_platform != target_platform]
@@ -33,11 +38,13 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-quickjsr
     - r-rcpp >=0.12.16
     - r-rcppparallel >=5.0.1
     - r-desc
   run:
     - r-base
+    - r-quickjsr
     - r-rcpp >=0.12.16
     - r-rcppparallel >=5.0.1
     - r-desc
@@ -49,7 +56,7 @@ test:
 
 about:
   home: https://mc-stan.org/rstantools/, https://discourse.mc-stan.org/
-  license: GPL-3.0-only
+  license: GPL-3.0-or-later
   summary: Provides various tools for developers of R packages interfacing with 'Stan' <https://mc-stan.org>, including functions to set up the required package structure, S3 generics and default methods to unify function naming across 'Stan'-based R packages, and vignettes with recommendations for developers.
   license_family: GPL3
   license_file:
