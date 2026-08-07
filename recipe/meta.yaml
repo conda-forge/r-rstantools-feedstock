@@ -17,10 +17,15 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-quickjsr                 # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
     - r-rcppparallel             # [build_platform != target_platform]
     - r-desc                     # [build_platform != target_platform]
@@ -33,11 +38,13 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-quickjsr
     - r-rcpp >=0.12.16
     - r-rcppparallel >=5.0.1
     - r-desc
   run:
     - r-base
+    - r-quickjsr
     - r-rcpp >=0.12.16
     - r-rcppparallel >=5.0.1
     - r-desc
@@ -49,7 +56,7 @@ test:
 
 about:
   home: https://mc-stan.org/rstantools/, https://discourse.mc-stan.org/
-  license: GPL-3.0-only
+  license: GPL-3.0-or-later
   summary: Provides various tools for developers of R packages interfacing with 'Stan' <https://mc-stan.org>, including functions to set up the required package structure, S3 generics and default methods to unify function naming across 'Stan'-based R packages, and vignettes with recommendations for developers.
   license_family: GPL3
   license_file:
